@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "ad41584f-2cec-41e4-b68c-5741359ca04f",
+		"name": "Django backend API",
+		"description": "Django backend API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42570905"
+	},
+	"item": [
+		{
+			"name": "Google Authentication",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "This API starts the Google Authentication process.  \nIt redirects the user to Google Login.\n\nResponse: Redirect to Google OAuth. with json matadata"
+			},
+			"response": []
+		},
+		{
+			"name": "Google drive upload",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "**Description:**  \nUploads a file to the authenticated user's Google Drive.\n\n**Method:** POST  \n**URL:** `http://127.0.0.1:8000/drive/upload/`\n\n**Headers:**\n\n- Content-Type: application/json\n    \n- Authorization: (If required)\n    \n\n**Body (JSON Example - Not Required Here, but for Future Expansion)**  \n{  \n\"filename\": \"example.txt\"  \n}\n\n**Response:**  \nSuccess (200 OK)\n\n``` json\n{\n  \"file_id\": \"1TB3G7j0HdlHx4f2500NyyDtKG0XpBn6T\"\n}\n\n ```\n\nNote :\n\nyou will see `\"User is not authenticated with Google Drive\"` in the response, it means authentication is missing. Follow the authentication steps before making this request.\n\nit will return file id once user is authenticated."
+			},
+			"response": []
+		},
+		{
+			"name": "File_Download",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"description": "StartFragment\n\n### **Endpoint:**\n\n- **Method:** `GET`\n    \n- **URL:** `/drive/download/{file_id}/`\n    \n- **Description:** Downloads a file from Google Drive using its `file_id`.\n    \n\n### **Headers:**\n\n- `Content-Type: application/json`\n    \n- `Authorization: Bearer` _(if required)_\n    \n\n### **Path Parameter:**\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `file_id` | `string` | Google Drive file ID to download |\n\n### **Request Example:**\n\n```\nbashCopyEditGET http://localhost:8000/drive/download/1Gr3sclyrCIGE5cM4KfSUnvmXgrqJ2tnl/\n\n ```\n\n### **Success Response (200 OK):**\n\n```\njsonCopyEdit{\n  \"message\": \"File downloaded successfully!\",\n  \"file_path\": \"1Gr3sclyrCIGE5cM4KfSUnvmXgrqJ2tnl.pdf\"\n}\n\n ```\n\n### **Possible Errors:**\n\n1. **401 Unauthorized:** User not authenticated.\n    \n2. **404 Not Found:** Invalid or missing file ID.\n    \n3. **500 Internal Server Error:** Issue with Google Drive API.\n    \n\n### **Usage in Postman:**\n\n1. Authenticate via `/auth/` in a browser.\n    \n2. Add **Authorization Token** (if required).\n    \n3. Send a `GET` request with a valid `file_id`.\n    \n4. File downloads successfully if the request is valid."
+			},
+			"response": []
+		}
+	]
+}
