@@ -1,4 +1,4 @@
-﻿Django==5.0.2
+Django==5.0.2
 djangorestframework==3.14.0
 google-auth==2.22.0
 google-auth-oauthlib==1.0.0
@@ -6,4 +6,4 @@ google-auth-httplib2==0.1.1
 google-api-python-client==2.105.0
 channels==4.0.0
 gunicorn==21.2.0
-daphne
+daphne==4.0.0  
