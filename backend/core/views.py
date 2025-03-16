@@ -71,7 +71,7 @@ SCOPES = [
 # ✅ Start Google OAuth Flow
 def google_auth(request):
     flow = Flow.from_client_config(CLIENT_CONFIG, scopes=SCOPES)
-    flow.redirect_uri = "http://localhost:8000/auth/callback"
+    flow.redirect_uri = "https://google-drive-api-websocket-chat.onrender.com/auth/callback/"
 
     auth_url, state = flow.authorization_url(prompt="consent")
     request.session["state"] = state  # Store state in session
