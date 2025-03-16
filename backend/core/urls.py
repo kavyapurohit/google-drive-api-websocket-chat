@@ -1,9 +1,9 @@
 from django.urls import path
-from core.views import google_auth, google_auth_callback, upload_file_to_drive, list_drive_files, download_file, homepage
+from core.views import google_auth, google_auth_callback, upload_file_to_drive, list_drive_files, download_file, homepage, home
 
 urlpatterns = [
     path('', homepage, name='homepage'), 
-    path("home/", views.home, name="home"),
+    path("home/", home, name="home"),
     path('auth/', google_auth, name="google-auth"),
     path('auth/callback/', google_auth_callback, name="google-auth-callback"),
     path('drive/upload/', upload_file_to_drive, name='upload-file'),
