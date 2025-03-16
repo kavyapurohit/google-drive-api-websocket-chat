@@ -80,7 +80,7 @@ def google_auth(request):
 # ✅ Google OAuth Callback (MATCHING SCOPES)
 def google_auth_callback(request):
     flow = Flow.from_client_config(CLIENT_CONFIG, scopes=SCOPES)
-    flow.redirect_uri = "http://localhost:8000/auth/callback"
+    flow.redirect_uri = "https://google-drive-api-websocket-chat.onrender.com/auth/callback/"
     flow.fetch_token(authorization_response=request.build_absolute_uri())
 
     credentials = flow.credentials  # Get credentials
@@ -89,11 +89,11 @@ def google_auth_callback(request):
     request.session["credentials"] = credentials_json  # Store in session
     request.session.modified = True  # Ensure session is saved
 
-    # ✅ Print session ID for debugging
     print("Session ID:", request.session.session_key)
     print("Stored Credentials:", credentials_json)  # Debugging
 
-    return JsonResponse({"message": "User authenticated successfully", "user_info": credentials.id_token})
+    # ✅ Redirect to homepage after login (or dashboard)
+    return redirect("https://google-drive-api-websocket-chat.onrender.com/")
 
 # ✅ Download File from Google Drive
 def download_file(request, file_id):
