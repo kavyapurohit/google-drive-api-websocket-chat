@@ -13,6 +13,12 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 def homepage(request):
     return JsonResponse({"message": "Welcome to the API!"})
+    # ✅ Home View (Check if User is Authenticated)
+def home(request):
+    if "credentials" in request.session:
+        return JsonResponse({"message": "User authenticated!", "status": "success"})
+    else:
+        return JsonResponse({"error": "User not authenticated. Please log in again."}, status=401)
 
 # ✅ Upload File to Google Drive
 def upload_file_to_drive(request):
