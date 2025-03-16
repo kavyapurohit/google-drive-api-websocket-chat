@@ -56,7 +56,8 @@ CLIENT_CONFIG = {
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
         "token_uri": "https://oauth2.googleapis.com/token",
         "client_secret": "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",
-        "redirect_uris": ["http://localhost:8000/auth/callback"]
+       "redirect_uris": "https://google-drive-api-websocket-chat.onrender.com/auth/callback/",
+
     }
 }
 
