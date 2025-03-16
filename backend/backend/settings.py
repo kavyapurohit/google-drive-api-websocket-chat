@@ -25,7 +25,12 @@ SECRET_KEY = "django-insecure-@+!c(q)0t84h4fwfj58@5pa$9wymfd2q63+db-$ny)*l-x@-r+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "google-drive-api-websocket-chat.onrender.com", 
+    "localhost", 
+    "127.0.0.1",
+]
+
 
 
 # Application definition
